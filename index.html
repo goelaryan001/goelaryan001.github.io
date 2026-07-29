@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aryan Goel — Data Scientist &amp; ML Engineer</title>
+<meta name="description" content="Portfolio of Aryan Goel — Data Scientist and ML Engineer, MS Computer Science at USC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14171c;
+    --ink-2:#1c2129;
+    --paper:#f3f4f1;
+    --surface:#ffffff;
+    --text-primary:#1b1e23;
+    --text-secondary:#5b5f66;
+    --text-muted:#8a8f98;
+    --on-ink:#f3f4f1;
+    --on-ink-secondary:#9ba1ab;
+    --signal:#158f81;
+    --signal-dark:#0e6b60;
+    --confound:#c97a1f;
+    --confound-dark:#9c5f18;
+    --border:#e1e1dc;
+    --border-ink:rgba(255,255,255,0.12);
+    --radius:10px;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--text-primary);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;margin:0;letter-spacing:-0.01em;}
+  a{color:inherit;}
+  img,svg{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  section{padding:96px 0;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--signal-dark);
+    margin-bottom:14px;
+    display:block;
+  }
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head h2{font-size:32px;}
+  .section-head p{color:var(--text-secondary);font-size:16.5px;margin-top:12px;}
+
+  /* focus states */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--signal);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(243,244,241,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:var(--max);margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+    position:relative;
+  }
+  .nav-logo{font-family:var(--font-display);font-weight:700;font-size:18px;text-decoration:none;}
+  .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
+  .nav-links a{
+    text-decoration:none;font-size:14.5px;color:var(--text-secondary);
+    transition:color .15s;
+  }
+  .nav-links a:hover{color:var(--text-primary);}
+  .nav-cta{
+    font-family:var(--font-mono);font-size:13px;font-weight:500;
+    background:var(--ink);color:var(--on-ink);
+    padding:9px 16px;border-radius:8px;text-decoration:none;
+    border:1px solid var(--ink);
+    transition:opacity .15s;
+  }
+  .nav-cta:hover{opacity:.85;}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--text-primary);margin:5px 0;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--on-ink);
+    padding:88px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:var(--max);margin:0 auto;padding:0 28px;
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+  }
+  .hero h1{
+    font-size:44px;line-height:1.12;color:var(--on-ink);
+    margin-bottom:22px;
+  }
+  .hero .lede{
+    font-size:17.5px;color:var(--on-ink-secondary);max-width:480px;margin-bottom:32px;
+  }
+  .hero-links{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-mono);font-size:13.5px;font-weight:500;
+    padding:11px 20px;border-radius:8px;text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform .15s, opacity .15s;
+    border:1px solid transparent;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--signal);color:#eafbf8;}
+  .btn-primary:hover{background:var(--signal-dark);}
+  .btn-ghost{border-color:var(--border-ink);color:var(--on-ink);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.06);}
+
+  .chart-card{
+    background:var(--ink-2);
+    border:1px solid var(--border-ink);
+    border-radius:14px;
+    padding:26px 22px 20px;
+  }
+  .chart-caption{
+    font-size:13px;color:var(--on-ink-secondary);margin-top:14px;
+    border-top:1px solid var(--border-ink);padding-top:14px;
+  }
+  .chart-caption b{color:var(--on-ink);font-weight:500;}
+  .legend{display:flex;gap:18px;margin-top:14px;flex-wrap:wrap;}
+  .legend-item{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:12px;color:var(--on-ink-secondary);}
+  .legend-dot{width:9px;height:9px;border-radius:2px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start;}
+  .about-grid p{color:var(--text-secondary);font-size:16.5px;margin:0 0 16px;}
+  .fact-panel{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:24px;
+  }
+  .fact-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);font-size:14.5px;}
+  .fact-row:last-child{border-bottom:none;}
+  .fact-row span:first-child{color:var(--text-muted);font-family:var(--font-mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;}
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{border-left:2px solid var(--border);padding-left:32px;display:flex;flex-direction:column;gap:44px;margin-left:6px;}
+  .tl-item{position:relative;}
+  .tl-item::before{
+    content:'';position:absolute;left:-39px;top:4px;width:10px;height:10px;border-radius:50%;
+    background:var(--signal);border:2px solid var(--paper);
+  }
+  .tl-date{font-family:var(--font-mono);font-size:12.5px;color:var(--signal-dark);margin-bottom:6px;display:block;}
+  .tl-item h3{font-size:19px;margin-bottom:2px;}
+  .tl-org{color:var(--text-muted);font-size:14px;margin-bottom:10px;}
+  .tl-item p{color:var(--text-secondary);font-size:15px;max-width:640px;}
+
+  /* ---------- PROJECTS ---------- */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+  .filter-btn{
+    font-family:var(--font-mono);font-size:13px;padding:8px 16px;border-radius:20px;
+    border:1px solid var(--border);background:var(--surface);color:var(--text-secondary);
+    cursor:pointer;transition:all .15s;
+  }
+  .filter-btn:hover{border-color:var(--text-muted);}
+  .filter-btn.active{background:var(--ink);color:var(--on-ink);border-color:var(--ink);}
+  .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:24px;display:flex;flex-direction:column;transition:border-color .15s, transform .15s;
+  }
+  .card:hover{border-color:var(--text-muted);transform:translateY(-2px);}
+  .card.hidden{display:none;}
+  .card-tags-top{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
+  .pill{
+    font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;
+    padding:3px 8px;border-radius:5px;background:rgba(21,143,129,0.1);color:var(--signal-dark);
+  }
+  .pill.genai{background:rgba(201,122,31,0.12);color:var(--confound-dark);}
+  .card h3{font-size:17px;margin-bottom:10px;line-height:1.3;}
+  .card p{font-size:14px;color:var(--text-secondary);flex-grow:1;margin:0 0 16px;}
+  .card-stack{font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted);margin-bottom:14px;}
+  .card-link{
+    font-size:13px;font-weight:500;text-decoration:none;color:var(--text-primary);
+    display:inline-flex;align-items:center;gap:5px;
+  }
+  .card-link:hover{color:var(--signal-dark);}
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .skill-group h3{font-size:14px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted);margin-bottom:14px;font-weight:500;}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .skill-tag{
+    font-size:13.5px;padding:6px 13px;border-radius:7px;background:var(--surface);
+    border:1px solid var(--border);color:var(--text-secondary);
+  }
+
+  /* ---------- EDU / ACHIEVEMENTS ---------- */
+  .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;}
+  .edu-card h3{font-size:18px;margin-bottom:4px;}
+  .edu-card .tl-org{margin-bottom:8px;}
+  .edu-meta{display:flex;justify-content:space-between;font-size:13.5px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:10px;}
+  .ach-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;}
+  .ach-list li{padding-left:24px;position:relative;color:var(--text-secondary);font-size:15px;}
+  .ach-list li::before{content:'—';position:absolute;left:0;color:var(--signal);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--on-ink);padding:72px 0 40px;}
+  .footer-inner{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  footer h2{color:var(--on-ink);font-size:30px;margin-bottom:16px;}
+  footer p{color:var(--on-ink-secondary);max-width:440px;margin-bottom:32px;}
+  .footer-links{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:56px;}
+  .footer-bottom{border-top:1px solid var(--border-ink);padding-top:24px;display:flex;justify-content:space-between;font-size:13px;color:var(--on-ink-secondary);flex-wrap:wrap;gap:10px;}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr;gap:40px;}
+    .about-grid{grid-template-columns:1fr;}
+    .project-grid{grid-template-columns:1fr 1fr;}
+    .skill-groups{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    section{padding:64px 0;}
+    .hero{padding:56px 0 48px;}
+    .hero h1{font-size:32px;}
+    .nav-links, .nav-cta{display:none;}
+    .nav-links.mobile-open{
+      display:flex;flex-direction:column;gap:16px;
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--paper);border-bottom:1px solid var(--border);
+      padding:20px 28px;
+    }
+    .nav-toggle{display:block;}
+    .project-grid{grid-template-columns:1fr;}
+    .fact-panel .fact-row{font-size:13.5px;}
+    footer h2{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">AG</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:aryangoe@usc.edu">Get in touch</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">Data Scientist · ML Engineer</span>
+      <h1>Averages hide the interesting part.</h1>
+      <p class="lede">I'm Aryan Goel — an MS Computer Science student at USC who digs past the aggregate number until the real signal shows up, then ships it as production code. Working across data science, data engineering, and ML engineering, with GenAI systems next.</p>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="#projects">See the projects</a>
+        <a class="btn btn-ghost" href="Aryan_Goel_Resume_DataScientist.pdf">Download résumé</a>
+      </div>
+    </div>
+    <div class="chart-card" role="img" aria-label="Bar chart showing a Simpson's paradox: overall, a support feature appears to raise churn from 20.1% to 28.4%, but within every contract segment it lowers churn.">
+      <svg viewBox="0 0 600 232" width="100%">
+        <line x1="30" y1="210" x2="580" y2="210" stroke="var(--border-ink)" stroke-width="1"/>
+        <!-- Overall group -->
+        <rect x="61" y="145.8" width="26" height="64.2" rx="3" fill="#54606b"/>
+        <rect x="93" y="119" width="26" height="91" rx="3" fill="#c97a1f"/>
+        <text x="103" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#e0a860">28.4%</text>
+        <text x="90" y="228" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" fill="#9ba1ab">Overall</text>
+
+        <!-- Month-to-month group -->
+        <rect x="196" y="63.4" width="26" height="146.6" rx="3" fill="#54606b"/>
+        <rect x="228" y="115.6" width="26" height="94.4" rx="3" fill="#158f81"/>
+        <text x="238" y="108" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#5fc9ba">29.5%</text>
+        <text x="225" y="228" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" fill="#9ba1ab">Month-to-month</text>
+
+        <!-- One-year group -->
+        <rect x="346" y="163.6" width="26" height="46.4" rx="3" fill="#54606b"/>
+        <rect x="378" y="196.2" width="26" height="13.8" rx="3" fill="#158f81"/>
+        <text x="388" y="190" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#5fc9ba">4.3%</text>
+        <text x="375" y="228" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" fill="#9ba1ab">One-year</text>
+
+        <!-- Two-year group -->
+        <rect x="481" y="196.2" width="26" height="13.8" rx="3" fill="#54606b"/>
+        <rect x="513" y="201.7" width="26" height="8.3" rx="3" fill="#158f81"/>
+        <text x="523" y="195" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#5fc9ba">2.6%</text>
+        <text x="510" y="228" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" fill="#9ba1ab">Two-year</text>
+      </svg>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-dot" style="background:#54606b"></span>No priority support</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#158f81"></span>With support — true effect</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#c97a1f"></span>With support — aggregate (misleading)</div>
+      </div>
+      <div class="chart-caption">Real churn rates from my A/B testing project. <b>Aggregated, priority support looks like it raises churn.</b> Split by contract type, it lowers churn every time — the customers buying support were self-selected from the highest-risk segment. This reversed the moment I split it.</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap reveal">
+    <span class="eyebrow">About</span>
+    <div class="about-grid">
+      <div>
+        <p>I'm a Master's student in Computer Science (Data Science specialization) at USC, by way of a Bachelor's in Computer &amp; Communication Engineering from Manipal University Jaipur, and research stints at ISRO and IIT Roorkee before that.</p>
+        <p>What actually holds my interest is the moment a dataset stops making sense at face value — a support ticket that seems to raise churn until you check who bought it, a query that runs fine until the table crosses a few million rows. I like tracing those down to the real mechanism, then building the pipeline, model, or system that acts on it correctly.</p>
+        <p>Right now that spans classical ML and statistics, database internals, and increasingly agentic GenAI systems — I'm deliberately building breadth across data science, data engineering, and ML engineering rather than narrowing early.</p>
+      </div>
+      <div class="fact-panel">
+        <div class="fact-row"><span>Based in</span><span>Los Angeles, CA</span></div>
+        <div class="fact-row"><span>Studying</span><span>MS CS · USC, 2027</span></div>
+        <div class="fact-row"><span>Prior research</span><span>ISRO · IIT Roorkee</span></div>
+        <div class="fact-row"><span>Focus</span><span>DS · DE · MLE</span></div>
+        <div class="fact-row"><span>Next up</span><span>GenAI &amp; agents</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Experience</span>
+      <h2>Research before the classroom caught up</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-date">Feb — May 2025</span>
+        <h3>Research Intern</h3>
+        <div class="tl-org">Indian Institute of Remote Sensing (ISRO), Dehradun</div>
+        <p>Engineered a cascaded CNN (CED-Net) for crop and weed segmentation on RGB drone imagery, with a full annotation-to-evaluation pipeline and architecture comparisons scored on IoU and Dice.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">May — Jul 2024</span>
+        <h3>Research Summer Engineer</h3>
+        <div class="tl-org">Indian Institute of Technology (IIT) Roorkee</div>
+        <p>Devised a Physics-Informed Gaussian Process Regression model for flood forecasting, with Monte Carlo and Multi-Level Monte Carlo uncertainty quantification for confidence-bounded predictions.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-date">Jun — Jul 2023</span>
+        <h3>Software Developer</h3>
+        <div class="tl-org">Indian Institute of Technology (IIT) Roorkee</div>
+        <p>Managed geospatial data layers in GeoServer for a production WebGIS application, and rebuilt the rendering pipeline for better performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Projects</span>
+      <h2>16 builds, filtered by what you're hiring for</h2>
+      <p>Every project here has real, runnable code behind it. Filter by track to see what's most relevant.</p>
+    </div>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ds">Data Science</button>
+      <button class="filter-btn" data-filter="de">Data Engineering</button>
+      <button class="filter-btn" data-filter="mle">ML Engineering</button>
+      <button class="filter-btn" data-filter="genai">GenAI</button>
+    </div>
+    <div class="project-grid" id="projectGrid">
+
+      <div class="card" data-tags="ds">
+        <div class="card-tags-top"><span class="pill">DS</span></div>
+        <h3>Telecom Churn Prediction &amp; A/B Test Analysis</h3>
+        <p>Uncovered a genuine Simpson's paradox in a self-generated, deliberately messy dataset — full A/B test design behind the fix, power analysis included.</p>
+        <div class="card-stack">Python · Pandas · Scikit-learn · SciPy</div>
+        <!-- TODO: replace with this project's specific repo URL -->
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="ds mle">
+        <div class="card-tags-top"><span class="pill">DS</span><span class="pill">MLE</span></div>
+        <h3>Tumor Detection with Explainable AI</h3>
+        <p>Deep learning tumor classifier with Grad-CAM/SHAP explainability, deployed for inference on GCP — a clinical model needs an explanation, not just a prediction.</p>
+        <div class="card-stack">PyTorch · SHAP · GCP</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="de">
+        <div class="card-tags-top"><span class="pill">DE</span></div>
+        <h3>DuckDB vs. PostgreSQL: Query Performance</h3>
+        <p>Benchmarked DuckDB's columnar, vectorized engine against Postgres's row-store on identical analytical queries, using EXPLAIN ANALYZE to trace exactly where the speedup comes from.</p>
+        <div class="card-stack">DuckDB · PostgreSQL · SQL</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="de">
+        <div class="card-tags-top"><span class="pill">DE</span></div>
+        <h3>Real-Time Flight Data Engineering Pipeline</h3>
+        <p>Airflow-orchestrated ingestion of live flight data into Snowflake, with incremental loading and failure alerting built in from the start.</p>
+        <div class="card-stack">Airflow · Snowflake · Python</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="mle">
+        <div class="card-tags-top"><span class="pill">MLE</span></div>
+        <h3>Object Detection (Faster R-CNN) — Full MLOps Loop</h3>
+        <p>Faster R-CNN detector with DVC-versioned data and pipelines, TensorBoard tracking, and a FastAPI serving layer tested via Postman — the whole loop, not just the notebook.</p>
+        <div class="card-stack">PyTorch · DVC · TensorBoard · FastAPI</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="genai mle">
+        <div class="card-tags-top"><span class="pill genai">GenAI</span><span class="pill">MLE</span></div>
+        <h3>Multi-Agent Clinical Trial Intelligence</h3>
+        <p>A LangGraph-orchestrated multi-agent system for trial-matching workflows, using LangMem for memory that persists across turns, deployed on GCP.</p>
+        <div class="card-stack">LangGraph · LangMem · GCP</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="genai mle">
+        <div class="card-tags-top"><span class="pill genai">GenAI</span><span class="pill">MLE</span><span class="pill" style="background:rgba(0,0,0,0.06);color:var(--text-muted);">Team</span></div>
+        <h3>BrandSync: Agentic Multi-Modal Ad Generation</h3>
+        <p>Team project — I built the stateless Supabase caching layer and the feedback-routing system that only regenerates the specific asset an edit concerns, cutting redundant API calls up to 80% on targeted revisions.</p>
+        <div class="card-stack">Supabase · FastAPI · Google ADK</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="de mle">
+        <div class="card-tags-top"><span class="pill">DE</span><span class="pill">MLE</span></div>
+        <h3>MLOps Pipeline with Automated ETL</h3>
+        <p>End-to-end pipeline from ingestion through deployment, with CI/CD via GitHub Actions and full experiment/version tracking through MLflow and DVC.</p>
+        <div class="card-stack">MLflow · DVC · Docker · GitHub Actions</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="genai">
+        <div class="card-tags-top"><span class="pill genai">GenAI</span></div>
+        <h3>Insurance Claim Support AI Agent</h3>
+        <p>RAG-based support agent grounding responses in policy documents, with LangMem handling conversational memory across a claims conversation.</p>
+        <div class="card-stack">LangMem · RAG · Vector DB</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="genai mle">
+        <div class="card-tags-top"><span class="pill genai">GenAI</span><span class="pill">MLE</span></div>
+        <h3>AI-Powered GitHub PR Code Reviewer</h3>
+        <p>An LLM-powered reviewer that comments on code quality, style, and likely bugs automatically through the GitHub API.</p>
+        <div class="card-stack">LLM API · GitHub API</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="ds genai">
+        <div class="card-tags-top"><span class="pill">DS</span><span class="pill genai">GenAI</span></div>
+        <h3>Text Summarization with Hugging Face Transformers</h3>
+        <p>Abstractive summarization fine-tuned and applied on transformer models, evaluated with ROUGE.</p>
+        <div class="card-stack">Hugging Face · PyTorch</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="ds genai">
+        <div class="card-tags-top"><span class="pill">DS</span><span class="pill genai">GenAI</span></div>
+        <h3>AutoGen Data Analyzer GPT</h3>
+        <p>A multi-agent data-analysis system where agents write, execute, and critique analysis code against a live dataset together.</p>
+        <div class="card-stack">AutoGen · Python</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="ds">
+        <div class="card-tags-top"><span class="pill">DS</span></div>
+        <h3>2-Stage Loan Approval &amp; Valuation System</h3>
+        <p>Imbalanced-data classifier using SMOTE, evaluated around the real cost of a false negative — a bad loan approved — rather than raw accuracy.</p>
+        <div class="card-stack">Python · Scikit-learn</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="de">
+        <div class="card-tags-top"><span class="pill">DE</span></div>
+        <h3>Solar Energy Data Analysis &amp; Reporting</h3>
+        <p>MySQL-backed reporting pipeline with Power BI dashboards for production analytics.</p>
+        <div class="card-stack">Power BI · MySQL</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="de mle">
+        <div class="card-tags-top"><span class="pill">DE</span><span class="pill">MLE</span></div>
+        <h3>MLOps Jenkins Shared Library CI/CD</h3>
+        <p>A reusable Jenkins Shared Library standardizing build, test, and deploy stages across multiple ML project pipelines.</p>
+        <div class="card-stack">Jenkins · Groovy</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="mle">
+        <div class="card-tags-top"><span class="pill">MLE</span></div>
+        <h3>Tennis Match Analysis — Computer Vision Pipeline</h3>
+        <p>YOLO-based multi-object tracking across long rally sequences, plus a custom CNN for court-keypoint localization.</p>
+        <div class="card-stack">YOLO · OpenCV · CNN</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Skills</span>
+      <h2>What's underneath the projects</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Statistics &amp; experimentation</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Hypothesis testing</span><span class="skill-tag">A/B testing</span>
+          <span class="skill-tag">Power analysis</span><span class="skill-tag">Causal reasoning</span>
+          <span class="skill-tag">Confounding analysis</span><span class="skill-tag">ANOVA</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>ML &amp; modeling</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Scikit-learn</span><span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">CNNs</span><span class="skill-tag">Gradient boosting</span>
+          <span class="skill-tag">SMOTE</span><span class="skill-tag">Feature engineering</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>MLOps &amp; deployment</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">MLflow</span><span class="skill-tag">DVC</span>
+          <span class="skill-tag">Docker</span><span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">TensorBoard</span><span class="skill-tag">CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>GenAI &amp; agentic systems</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">LangGraph</span><span class="skill-tag">LangMem</span>
+          <span class="skill-tag">RAG</span><span class="skill-tag">Google ADK</span>
+          <span class="skill-tag">Multi-agent design</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Databases &amp; query engines</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">PostgreSQL</span><span class="skill-tag">DuckDB</span>
+          <span class="skill-tag">MySQL</span><span class="skill-tag">Query optimization</span>
+          <span class="skill-tag">Indexing</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Big data, cloud &amp; tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Airflow</span><span class="skill-tag">Snowflake</span>
+          <span class="skill-tag">Spark</span><span class="skill-tag">GCP</span>
+          <span class="skill-tag">AWS EC2</span><span class="skill-tag">Power BI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Education &amp; achievements</span>
+      <h2>The formal record</h2>
+    </div>
+    <div class="about-grid" style="grid-template-columns:1.2fr 1fr;">
+      <div>
+        <div class="edu-card">
+          <h3>University of Southern California</h3>
+          <div class="tl-org">Master of Science, Computer Science — Data Science Specialization</div>
+          <div class="edu-meta"><span>Los Angeles, CA</span><span>Aug 2025 – May 2027</span></div>
+          <p style="color:var(--text-secondary);font-size:14.5px;margin:0;">Coursework: Machine Learning for Data Science, Applied Statistical Inference, Deep Learning, Algorithms, Database Systems, Foundations of Data Management (Hadoop, Spark), NLP.</p>
+        </div>
+        <div class="edu-card">
+          <h3>Manipal University Jaipur</h3>
+          <div class="tl-org">Bachelor of Technology, Computer &amp; Communication Engineering</div>
+          <div class="edu-meta"><span>GPA 9.15 / 10</span><span>Jul 2021 – May 2025</span></div>
+        </div>
+      </div>
+      <div>
+        <ul class="ach-list">
+          <li>1st Place, Inter-College Hackathon (Mental Health track) — built a Figma-prototyped app with an integrated chatbot.</li>
+          <li>Dean's List for Academic Excellence, Manipal University Jaipur — awarded twice.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <h2>Let's talk about what you're building.</h2>
+    <p>Open to Data Scientist, Data Engineer, and ML Engineer roles starting May 2027 — happy to talk sooner if the timing works for you.</p>
+    <div class="footer-links">
+      <a class="btn btn-primary" href="mailto:aryangoe@usc.edu">aryangoe@usc.edu</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/aryan-goel-087524241/">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/goelaryan001">GitHub</a>
+      <a class="btn btn-ghost" href="Aryan_Goel_Resume_DataScientist.pdf">Résumé</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Aryan Goel</span>
+      <span>Los Angeles, CA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.remove('mobile-open');
+  }));
+
+  // Project filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#projectGrid .card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(card => {
+        const tags = card.dataset.tags.split(' ');
+        card.classList.toggle('hidden', f !== 'all' && !tags.includes(f));
+      });
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
