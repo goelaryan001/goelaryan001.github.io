@@ -281,12 +281,12 @@
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow">Data Scientist · ML Engineer</span>
+      <span class="eyebrow">Data Engineer · Data Scientist · ML Engineer</span>
       <h1>Averages hide the interesting part.</h1>
-      <p class="lede">I'm Aryan Goel — an MS Computer Science student at USC who digs past the aggregate number until the real signal shows up, then ships it as production code. Working across data science, data engineering, and ML engineering, with GenAI systems next.</p>
+      <p class="lede">I'm Aryan Goel — an MS Computer Science student at USC who digs past the aggregate number until the real signal shows up, then ships it as production code. Working across data science, data engineering, ML engineering, and data analysis, with GenAI systems next.</p>
       <div class="hero-links">
         <a class="btn btn-primary" href="#projects">See the projects</a>
-        <a class="btn btn-ghost" href="Aryan_Goel_Resume_DataScientist.pdf">Download résumé</a>
+        <a class="btn btn-ghost" href="resume-de.pdf" id="resumeLinkHero">Download résumé</a>
       </div>
     </div>
     <div class="chart-card" role="img" aria-label="Bar chart showing a Simpson's paradox: overall, a support feature appears to raise churn from 20.1% to 28.4%, but within every contract segment it lowers churn.">
@@ -321,7 +321,7 @@
         <div class="legend-item"><span class="legend-dot" style="background:#158f81"></span>With support — true effect</div>
         <div class="legend-item"><span class="legend-dot" style="background:#c97a1f"></span>With support — aggregate (misleading)</div>
       </div>
-      <div class="chart-caption">Real churn rates from my A/B testing project. <b>Aggregated, priority support looks like it raises churn.</b> Split by contract type, it lowers churn every time — the customers buying support were self-selected from the highest-risk segment. This reversed the moment I split it.</div>
+      <div class="chart-caption">Churn rates from the synthetic data in my churn project. <b>Aggregated, priority support looks like it raises churn.</b> Split by contract type, it lowers churn every time — the customers buying support were self-selected from the highest-risk segment. This reversed the moment I split it.</div>
     </div>
   </div>
 </section>
@@ -339,7 +339,7 @@
         <div class="fact-row"><span>Based in</span><span>Los Angeles, CA</span></div>
         <div class="fact-row"><span>Studying</span><span>MS CS · USC, 2027</span></div>
         <div class="fact-row"><span>Prior research</span><span>ISRO · IIT Roorkee</span></div>
-        <div class="fact-row"><span>Focus</span><span>DS · DE · MLE</span></div>
+        <div class="fact-row"><span>Focus</span><span>DE · DA · DS · MLE · SDE</span></div>
         <div class="fact-row"><span>Next up</span><span>GenAI &amp; agents</span></div>
       </div>
     </div>
@@ -379,7 +379,7 @@
   <div class="wrap reveal">
     <div class="section-head">
       <span class="eyebrow">Projects</span>
-      <h2>16 builds, filtered by what you're hiring for</h2>
+      <h2>23 builds, filtered by what you're hiring for</h2>
       <p>Every project here has real, runnable code behind it. Filter by track to see what's most relevant.</p>
     </div>
     <div class="filters">
@@ -388,16 +388,56 @@
       <button class="filter-btn" data-filter="de">Data Engineering</button>
       <button class="filter-btn" data-filter="mle">ML Engineering</button>
       <button class="filter-btn" data-filter="genai">GenAI</button>
+      <button class="filter-btn" data-filter="da">Data Analysis</button>
+      <button class="filter-btn" data-filter="sde">Software Engineering</button>
     </div>
     <div class="project-grid" id="projectGrid">
 
-      <div class="card" data-tags="ds">
-        <div class="card-tags-top"><span class="pill">DS</span></div>
-        <h3>Telecom Churn Prediction &amp; A/B Test Analysis</h3>
-        <p>Uncovered a genuine Simpson's paradox in a self-generated, deliberately messy dataset — full A/B test design behind the fix, power analysis included.</p>
-        <div class="card-stack">Python · Pandas · Scikit-learn · SciPy</div>
-        <!-- TODO: replace with this project's specific repo URL -->
+      <div class="card" data-tags="de ds mle da sde">
+        <div class="card-tags-top"><span class="pill">DE</span><span class="pill">DS</span><span class="pill">MLE</span></div>
+        <h3>ChainSignal: Crypto Market &amp; On-Chain Anomaly Detection</h3>
+        <p>A batch pipeline for crypto market and on-chain anomaly detection: 1,000 coins × 365 days from CoinGecko plus 1.64M ERC-20 transfers from Etherscan, loaded into ClickHouse and processed with PySpark, Dagster and dbt. Compares a robust z-score, Isolation Forest and LOF using 887 planted anomalies and a backtest on documented events (Isolation Forest recovered 43% of 12σ combination anomalies vs 11% for the z-score; the Kelp DAO hack was missed and reported). Flags Celer Network's $1.5B volume on an $18M market cap as a wash-trading candidate, not a verdict.</p>
+        <div class="card-stack">Python · PySpark · ClickHouse · Dagster · dbt · scikit-learn</div>
         <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="de mle sde">
+        <div class="card-tags-top"><span class="pill">DE</span><span class="pill">MLE</span><span class="pill">SDE</span></div>
+        <h3>MarketPulse: Real-Time Trading Anomaly Detector</h3>
+        <p>Kafka + Spark Structured Streaming over live Finnhub trades (stocks and BTC/ETH): 1-minute watermarked bars, per-ticker z-scores on return, volume and trade rate against baselines built only from completed buckets, TimescaleDB hypertables, a Gemini agent that explains each flagged event, and a Streamlit dashboard. Includes the bugs found live (append vs. update output mode, watermark drift) and why a local model was replaced.</p>
+        <div class="card-stack">Python · Kafka · Spark Structured Streaming · TimescaleDB · Gemini</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="sde de">
+        <div class="card-tags-top"><span class="pill">SDE</span><span class="pill">DE</span></div>
+        <h3>Packetwright: PCAP Forensics Tool</h3>
+        <p>Re-engineered from a course codebase: a streaming single-pass parser (about 2 MB of RAM instead of about 865 MB on a 122K-packet capture), DuckDB-backed investigations, median/MAD-baselined port-scan and DNS-tunneling detection, and on-demand AI explanations of flagged patterns.</p>
+        <div class="card-stack">Python · Scapy · DuckDB · Flask</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="mle sde ds">
+        <div class="card-tags-top"><span class="pill">MLE</span><span class="pill">SDE</span><span class="pill">DS</span></div>
+        <h3>Little-Go: Game-Playing AI Agent</h3>
+        <p>A 5×5 Go agent for USC CSCI-561 using minimax with alpha-beta pruning and a custom heuristic: 60/60 games won in the course's grading tournament, a 63.5% win rate over the prior version (95% CI over 200–400 game tournaments), and a 61-test suite validated with mutation testing. A separate reinforcement-learning prototype is not part of the submitted agent. Code is kept private per course policy.</p>
+        <div class="card-stack">Python · Minimax · Alpha-beta pruning · pytest</div>
+      </div>
+
+      <div class="card" data-tags="ds da mle">
+        <div class="card-tags-top"><span class="pill">DS</span><span class="pill">DA</span><span class="pill">MLE</span></div>
+        <h3>Book Recommender</h3>
+        <p>Item-based collaborative filtering (cosine kNN on the Book-Crossing ratings) with a same-author content row, built on a course codebase; fixed the deprecated-API break and the book-recommends-itself artifact.</p>
+        <div class="card-stack">Python · scikit-learn · Streamlit</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="ds da de mle">
+        <div class="card-tags-top"><span class="pill">DS</span><span class="pill">DA</span><span class="pill">DE</span></div>
+        <h3>Telecom Churn Paradox: Causal Inference &amp; Uplift Modeling</h3>
+        <p>A leakage-safe churn pipeline on synthetic data with a built-in Simpson's paradox: the support add-on looked 6.5pp worse on raw churn but lowered churn in every risk quartile once stratified. Nested CV, isotonic calibration, a cost-optimal threshold, SHAP and segmentation, S/T/X-learner uplift models and a simulated A/B test, then re-run on real IBM Telco data (ROC-AUC 0.840), where the paradox did not replicate and is reported as such.</p>
+        <div class="card-stack">Python · scikit-learn · XGBoost · SHAP · DuckDB</div>
+        <a class="card-link" href="https://github.com/goelaryan001/Telecom-Churn-Paradox">View code →</a>
       </div>
 
       <div class="card" data-tags="ds mle">
@@ -408,7 +448,7 @@
         <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
       </div>
 
-      <div class="card" data-tags="de">
+      <div class="card" data-tags="de da">
         <div class="card-tags-top"><span class="pill">DE</span></div>
         <h3>DuckDB vs. PostgreSQL: Query Performance</h3>
         <p>Benchmarked DuckDB's columnar, vectorized engine against Postgres's row-store on identical analytical queries, using EXPLAIN ANALYZE to trace exactly where the speedup comes from.</p>
@@ -440,7 +480,7 @@
         <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
       </div>
 
-      <div class="card" data-tags="genai mle">
+      <div class="card" data-tags="genai mle sde">
         <div class="card-tags-top"><span class="pill genai">GenAI</span><span class="pill">MLE</span><span class="pill" style="background:rgba(0,0,0,0.06);color:var(--text-muted);">Team</span></div>
         <h3>BrandSync: Agentic Multi-Modal Ad Generation</h3>
         <p>Team project — I built the stateless Supabase caching layer and the feedback-routing system that only regenerates the specific asset an edit concerns, cutting redundant API calls up to 80% on targeted revisions.</p>
@@ -496,11 +536,27 @@
         <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
       </div>
 
-      <div class="card" data-tags="de">
-        <div class="card-tags-top"><span class="pill">DE</span></div>
-        <h3>Solar Energy Data Analysis &amp; Reporting</h3>
-        <p>MySQL-backed reporting pipeline with Power BI dashboards for production analytics.</p>
-        <div class="card-stack">Power BI · MySQL</div>
+      <div class="card" data-tags="de da ds">
+        <div class="card-tags-top"><span class="pill">DE</span><span class="pill">DA</span><span class="pill">DS</span></div>
+        <h3>SolarWatch GB: Solar Generation Analysis &amp; Reporting</h3>
+        <p>MySQL pipeline joining real PV_Live regional solar generation with Open-Meteo irradiance (323 UK regions × 60 days, 465K hourly rows): idempotent loads, a weather-adjusted baseline per region (median R² 0.81), anomaly flags checked out of sample and against PV_Live's national total, and an interactive HTML dashboard.</p>
+        <div class="card-stack">Python · MySQL · Docker</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="da">
+        <div class="card-tags-top"><span class="pill" style="background:rgba(0,0,0,0.06);color:var(--text-muted);">DA</span></div>
+        <h3>Regional Sales Performance Analysis &amp; Visualization</h3>
+        <p>Interactive Power BI dashboard tracking regional sales KPIs, trends, and performance drivers, built with DAX measures for stakeholder decision-making.</p>
+        <div class="card-stack">Power BI · DAX</div>
+        <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
+      </div>
+
+      <div class="card" data-tags="da">
+        <div class="card-tags-top"><span class="pill" style="background:rgba(0,0,0,0.06);color:var(--text-muted);">DA</span></div>
+        <h3>Interactive Diamonds Data Analysis &amp; Visualization</h3>
+        <p>Power BI dashboard with drill-down visualizations analyzing pricing and quality attributes across a large retail dataset.</p>
+        <div class="card-stack">Power BI · Power Query</div>
         <a class="card-link" href="https://github.com/goelaryan001">View code →</a>
       </div>
 
@@ -545,6 +601,7 @@
           <span class="skill-tag">Scikit-learn</span><span class="skill-tag">PyTorch</span>
           <span class="skill-tag">CNNs</span><span class="skill-tag">Gradient boosting</span>
           <span class="skill-tag">SMOTE</span><span class="skill-tag">Feature engineering</span>
+        <span class="skill-tag">XGBoost</span><span class="skill-tag">Isolation Forest / LOF</span><span class="skill-tag">Uplift modeling</span>
         </div>
       </div>
       <div class="skill-group">
@@ -569,6 +626,7 @@
           <span class="skill-tag">PostgreSQL</span><span class="skill-tag">DuckDB</span>
           <span class="skill-tag">MySQL</span><span class="skill-tag">Query optimization</span>
           <span class="skill-tag">Indexing</span>
+        <span class="skill-tag">ClickHouse</span><span class="skill-tag">TimescaleDB</span>
         </div>
       </div>
       <div class="skill-group">
@@ -577,6 +635,7 @@
           <span class="skill-tag">Airflow</span><span class="skill-tag">Snowflake</span>
           <span class="skill-tag">Spark</span><span class="skill-tag">GCP</span>
           <span class="skill-tag">AWS EC2</span><span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Kafka</span><span class="skill-tag">Spark Streaming</span><span class="skill-tag">PySpark</span><span class="skill-tag">Dagster</span><span class="skill-tag">dbt</span>
         </div>
       </div>
     </div>
@@ -605,6 +664,7 @@
       </div>
       <div>
         <ul class="ach-list">
+          <li>Second Runner-Up, UCLA Glitch × Google DeepMind Hackathon — built BrandSync, then developed it fully after the Google team's positive feedback.</li>
           <li>1st Place, Inter-College Hackathon (Mental Health track) — built a Figma-prototyped app with an integrated chatbot.</li>
           <li>Dean's List for Academic Excellence, Manipal University Jaipur — awarded twice.</li>
         </ul>
@@ -616,12 +676,12 @@
 <footer id="contact">
   <div class="footer-inner">
     <h2>Let's talk about what you're building.</h2>
-    <p>Open to Data Scientist, Data Engineer, and ML Engineer roles starting May 2027 — happy to talk sooner if the timing works for you.</p>
+    <p>Open to Data Engineer, Data Analyst, Data Scientist, ML Engineer, and Software Engineer roles starting May 2027 — happy to talk sooner if the timing works for you.</p>
     <div class="footer-links">
       <a class="btn btn-primary" href="mailto:aryangoe@usc.edu">aryangoe@usc.edu</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/aryan-goel-087524241/">LinkedIn</a>
       <a class="btn btn-ghost" href="https://github.com/goelaryan001">GitHub</a>
-      <a class="btn btn-ghost" href="Aryan_Goel_Resume_DataScientist.pdf">Résumé</a>
+      <a class="btn btn-ghost" href="resume-de.pdf" id="resumeLinkFooter">Résumé</a>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Aryan Goel</span>
@@ -639,6 +699,20 @@
   // Project filter
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('#projectGrid .card');
+
+  // Resume switches to match whichever track is being filtered — defaults to
+  // the Data Engineer resume for "All" since that's the primary target role.
+  const resumeByFilter = {
+    all: 'resume-de.pdf',
+    ds: 'resume-ds.pdf',
+    de: 'resume-de.pdf',
+    mle: 'resume-mle.pdf',
+    da: 'resume-da.pdf',
+    sde: 'resume-sde.pdf',
+    genai: 'resume-mle.pdf',
+  };
+  const resumeLinks = [document.getElementById('resumeLinkHero'), document.getElementById('resumeLinkFooter')];
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
@@ -648,6 +722,8 @@
         const tags = card.dataset.tags.split(' ');
         card.classList.toggle('hidden', f !== 'all' && !tags.includes(f));
       });
+      const targetResume = resumeByFilter[f] || 'resume-de.pdf';
+      resumeLinks.forEach(link => { if (link) link.href = targetResume; });
     });
   });
 
